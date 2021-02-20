@@ -9,7 +9,10 @@ namespace UserRegistrationLambdaDay14
     public class UserRegistrationTestLambda
     {
         string firstNamePattern = "^[A-Z]{1}[a-z]{2,}$";
+        string lastNamePattern = "^[A-Z]{1}[a-z]{2,}$";
         public bool FirstName(string patternFirstName) => Regex.IsMatch(patternFirstName, firstNamePattern);
+        public bool LastName(string patternLastName) => Regex.IsMatch(patternLastName, lastNamePattern);
+       
 
 
         /// <summary>
@@ -52,15 +55,65 @@ namespace UserRegistrationLambdaDay14
 
                 }
             }
-
-
-
             catch (UserRegistrationTestCustomException exception)
             {
                 throw exception;
             }
             return "FirstName is not valid";
         }
+             /// <summary>
+             /// LastName Custom Exception
+             /// </summary>
+             /// <param name="patternLastName"></param>
+             /// <returns></returns>
+            public string LastNameLambda(string patternLastName)
+            {
+                bool result = LastName(patternLastName);
+                try
+                {
+                    if (result == false)
+                    {
+
+                        if (patternLastName.Equals(string.Empty))
+                        {
+                            throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_ENTERED_EMPTY, "LastName should not be empty");
+                        }
+
+
+                        if (patternLastName.Length < 3)
+                        {
+                            throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_LESSTHAN_MINIMUM_LENGTH, "LastName should contains atleast three characters");
+
+                        }
+
+                        if (patternLastName.Any(char.IsDigit))
+                        {
+                            throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_ENTERED_NUMBER, "LastName should not contains number");
+                        }
+                        if (!char.IsUpper(patternLastName[0]))
+                        {
+                            throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_ENTERED_LOWERCASE, "LastName first letter should not be a lowercase");
+                        }
+                        if (patternLastName.Any(char.IsLetterOrDigit))
+                        {
+                            throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_ENTERED_SPECIAL_CHARACTER, "LastName should not contains special characters");
+                        }
+
+                    }
+            }
+
+            catch (UserRegistrationTestCustomException exception)
+            {
+                throw exception;
+            }
+            return "LastName is not valid";
+        }
+
+
+
+
+
+
         class Program
         {
             static void Main(string[] args)
