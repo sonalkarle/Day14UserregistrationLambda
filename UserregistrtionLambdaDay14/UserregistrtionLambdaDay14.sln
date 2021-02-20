@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserregistrtionLambdaDay14", "UserregistrtionLambdaDay14\UserregistrtionLambdaDay14.csproj", "{F8F60FBF-9E08-4CD9-9D5B-852F2B32BFFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Userregistrationlambda", "Userregistrationlambda\Userregistrationlambda.csproj", "{95687C8B-B16B-4DA3-9A94-FB6CA1E09BF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8F60FBF-9E08-4CD9-9D5B-852F2B32BFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F60FBF-9E08-4CD9-9D5B-852F2B32BFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F60FBF-9E08-4CD9-9D5B-852F2B32BFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F60FBF-9E08-4CD9-9D5B-852F2B32BFFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95687C8B-B16B-4DA3-9A94-FB6CA1E09BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95687C8B-B16B-4DA3-9A94-FB6CA1E09BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95687C8B-B16B-4DA3-9A94-FB6CA1E09BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95687C8B-B16B-4DA3-9A94-FB6CA1E09BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E76F2B17-76F9-42F9-870B-3DF8D26886F8}
+	EndGlobalSection
+EndGlobal
