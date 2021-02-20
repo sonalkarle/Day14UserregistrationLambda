@@ -10,9 +10,12 @@ namespace UserRegistrationLambdaDay14
     {
         string firstNamePattern = "^[A-Z]{1}[a-z]{2,}$";
         string lastNamePattern = "^[A-Z]{1}[a-z]{2,}$";
+        string mobileNumberPattern = "^[9]{1}[1]{1}[ ][0-9]{10}$";
         public bool FirstName(string patternFirstName) => Regex.IsMatch(patternFirstName, firstNamePattern);
         public bool LastName(string patternLastName) => Regex.IsMatch(patternLastName, lastNamePattern);
-       
+        public bool MobileNumber(string patternMobileNumber) => Regex.IsMatch(patternMobileNumber, mobileNumberPattern);
+
+
 
 
         /// <summary>
@@ -107,6 +110,50 @@ namespace UserRegistrationLambdaDay14
                 throw exception;
             }
             return "LastName is not valid";
+        }
+        /// <summary>
+        /// MobileNumber Custom Exception
+        /// </summary>
+        /// <param name="patternMobileNumber"></param>
+        /// <returns></returns>
+        public string MobileNumberLambda(string patternMobileNumber)
+        {
+            bool result = MobileNumber(patternMobileNumber);
+            try
+            {
+                if (result == false)
+                {
+
+                    if (patternMobileNumber.Equals(string.Empty))
+                    {
+                        throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_ENTERED_EMPTY, "MobileNumber should not be empty");
+                    }
+
+
+                    if (patternMobileNumber.Length < 13)
+                    {
+                        throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_LESSTHAN_MINIMUM_LENGTH, "MobileNumber should contains thirteen characters");
+
+                    }
+
+                    if (patternMobileNumber.Any(char.IsLetter))
+                    {
+                        throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_ENTERED_NUMBER, "MobileNumber should not contains letters");
+                    }
+
+                    if (patternMobileNumber.Any(char.IsLetterOrDigit))
+                    {
+                        throw new UserRegistrationTestCustomException(UserRegistrationTestCustomException.ExceptionType.USER_ENTERED_SPECIAL_CHARACTER, "MobileNumber should not contains special characters");
+                    }
+
+                }
+            }
+
+            catch (UserRegistrationTestCustomException exception)
+            {
+                throw exception;
+            }
+            return "MobileNumber is not valid";
         }
 
 
